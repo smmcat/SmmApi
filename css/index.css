@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #ccc;
+}
+
+.SMapiBox {
+    width: 70%;
+    /* padding: 10px 10px; */
+    margin: 10px auto;
+    min-height: 97vh;
+    max-height: 97vh;
+    background-color: #fff;
+    overflow: auto;
+    border-radius: 10px;
+}
+
+.SMapiBox::-webkit-scrollbar{
+    display: none;
+}
+
+.api_search_Box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 10px 40px;
+    border-bottom: 1px solid #ccc;
+}
+
+.api_search_Box #api_type {
+    flex: 1;
+    text-align: center;
+    margin: 5px 5px;
+    height: 5vh;
+}
+
+.api_search_Box #api_search {
+    padding: 5px 30px;
+    margin: 5px 5px;
+    height: 3vh;
+    flex: 4;
+}
+
+.api_search_Box #api_sub {
+    border: 1px solid #000;
+    background-color: #66cc;
+    color: #fff;
+    margin: 5px 5px;
+    height: 5vh;
+    flex: 1;
+}
+
+.api_data_Box {
+    padding: 10px 40px;
+    overflow: hidden;
+    /* width: 100%; */
+}
+
+.api_data_Box .api_menu li {
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    width: 80px;
+    line-height: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    user-select: none;
+}
+
+/* 隐藏显示参数选项 */
+.api_data_Box .api_menu li.menu_on {
+    border-bottom: 2px solid #66cc;
+}
+
+/* 隐藏显示参数盒子 */
+.data_box.Box_on {
+    display: block;
+}
+.data_box{
+    display: none;
+}
+
+.api_data_Box .data_menu {
+    padding: 10px 0;
+    font-size: 14px;
+    color: #4e4e4e;
+}
+
+.api_data_table {
+    margin: 0px auto;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+.api_data_table tr td, th {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+}
+.api_data_table tr td{
+    position: relative;
+}
+#del{
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translate(0,-50%);
+    font-size: 12px;
+    text-decoration: none;
+    color: red;
+}
+
+.api_data_table tr th {
+    font-size: 14px;
+    color: #4e4e4e;
+    text-align: left;
+}
+
+.api_data_table tr th:nth-child(1) {
+    text-align: center;
+}
+
+.api_data_table tr td input {
+    border: 0;
+    outline: 0;
+    width: 100%;
+}
+
+.api_data_table tr td:nth-child(1) {
+    text-align: center;
+}
+
+#add_data {
+    display: block;
+    font-size: 12px;
+    margin: 3px 0px;
+    float: right;
+}
+
+#data_menu {
+    margin: 30px 0;
+    margin-bottom: 5px;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #4e4e4e;
+}
+
+#api_data_content {
+    margin: 0px auto;
+    width: 100%;
+    height: 300px;
+    box-sizing: border-box;
+    padding: 10px;
+    resize: none;
+}
+
+
+#formData_box #formData_from td:nth-child(3){
+width: 50%;
+}
+
+#formData_box #formData_from .fromdata_select{
+    text-align: center;
+    width: 90%;
+    border: 0;
+    outline: 0;
+    font-size: 14px;
+}
+
+#only_formDate{
+    vertical-align: middle;
+}

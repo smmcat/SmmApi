@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./dil/jquery-3.6.0.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+
+<body>
+    <div class="SMapiBox">
+        <form action="" class="api_search_Box" id="sub_api_form">
+            <select name="type" id="api_type">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+            </select>
+            <input type="text" id="api_search" placeholder="http://">
+            <input type="submit" value="发送" id="api_sub">
+        </form>
+        <div class="api_data_Box">
+            <ul class="api_menu">
+                <li class="menu_on">query</li>
+                <li>body</li>
+                <li>FormData</li>
+                <li>Headers</li>
+            </ul>
+            <div id="query_box" class="data_box Box_on">
+                <p class="data_menu" id="query_menu">Query参数</p>
+                <table class="api_data_table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" checked name="select" id="is_select_all"></th>
+                            <th>参数名</th>
+                            <th>参数值</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" checked name="select" id="is_select"></td>
+                            <td><input type="text" placeholder="添加参数"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="JavaScript:;" id="add_data">添加一项</a>
+            </div>
+            <div id="body_box" class="data_box">
+                <p class="data_menu" id="body_menu">body参数<span style="color:#ccc;margin:0px 10px;font-size:12px">application/x-www-form-urlencoded</span></p>
+                <table class="api_data_table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" checked name="select" id="is_select_all"></th>
+                            <th>参数名</th>
+                            <th>参数值</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" checked name="select" id="is_select"></td>
+                            <td><input type="text" placeholder="添加参数"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="JavaScript:;" id="add_data">添加一项</a>
+            </div>
+            <div id="formData_box" class="data_box">
+                <form action="" id="formData_from">
+                    <p class="data_menu" id="body_menu">FormData参数<span style="color:red;margin:0px 10px;font-size:12px">*勾选为仅使用该方式*</span><input type="checkbox" id="only_formDate"></p>
+                    <table class="api_data_table">
+                        <thead>
+                            <tr>
+                                <th>参数名</th>
+                                <th>类型</th>
+                                <th>参数值</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" placeholder="添加参数" id="data_name"></td>
+                                <td><select class="fromdata_select">
+                                        <option value="text">String / int</option>
+                                        <option value="file">file</option>
+                                    </select></td>
+                                <td><input type="text"  id="from_data"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="JavaScript:;" id="add_data">添加一项</a>
+                </form>
+            </div>
+            <div id="headers_box" class="data_box">
+                <p class="data_menu" id="headers_menu">Headers参数</p>
+                <table class="api_data_table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" checked name="select" id="is_select_all"></th>
+                            <th>参数名</th>
+                            <th>参数值</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th><input type="checkbox" checked name="select" id="is_select"></th>
+                            <td><input type="text" placeholder="添加参数"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="JavaScript:;" id="add_data">添加一项</a>
+            </div>
+            <p id="data_menu">返回参数</p>
+            <textarea name="" id="api_data_content" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+
+    </div>
+
+    <script>
+        document.querySelector
+    </script>
+
+</body>
+
+</html>
