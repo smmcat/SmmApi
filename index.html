@@ -13,6 +13,7 @@
 
 <body>
     <div class="SMapiBox">
+        <div class="waitBox">请等待...</div>
         <form action="" class="api_search_Box" id="sub_api_form">
             <select name="type" id="api_type">
                 <option value="GET">GET</option>
@@ -20,6 +21,7 @@
             </select>
             <input type="text" id="api_search" placeholder="http://">
             <input type="submit" value="发送" id="api_sub">
+            <input type="button" value="取消发送" id="over_sub">
         </form>
         <div class="api_data_Box">
             <ul class="api_menu">
@@ -83,8 +85,8 @@
                             <tr>
                                 <td><input type="text" placeholder="添加参数" id="data_name"></td>
                                 <td><select class="fromdata_select">
-                                        <option value="text">String / int</option>
-                                        <option value="file">file</option>
+                                        <option value="text">文本</option>
+                                        <option value="file">文件</option>
                                     </select></td>
                                 <td><input type="text"  id="from_data"></td>
                             </tr>
@@ -119,11 +121,6 @@
     </div>
 
     </div>
-
-    <script>
-        document.querySelector
-    </script>
-
 </body>
 
 </html>

@@ -1,11 +1,31 @@
 $(function () {
 
+    // 初始化请求 状态
+    let ajaxState = null;
+
     // 参数界面切换交互
     $('.api_menu li').on('click', function () {
         $(this).addClass('menu_on').siblings().removeClass('menu_on');
         console.log($(this).index());
 
         $('.data_box').eq($(this).index()).addClass('Box_on').siblings().removeClass(' Box_on');
+    })
+
+    // 请求框发生改变 同步 选择指定 参数表格
+    $('#api_type').on('change', function () {
+        if ($(this).val() == 'GET') {
+            $('.data_box').eq(0).addClass('Box_on').siblings().removeClass(' Box_on');
+            $('.api_menu li').eq(0).addClass('menu_on').siblings().removeClass('menu_on');
+        } else if ($(this).val() == 'POST') {
+            if ($('#only_formDate')[0].checked) {
+                $('.data_box').eq(2).addClass('Box_on').siblings().removeClass(' Box_on');
+                $('.api_menu li').eq(2).addClass('menu_on').siblings().removeClass('menu_on');
+            } else {
+                $('.data_box').eq(1).addClass('Box_on').siblings().removeClass(' Box_on');
+                $('.api_menu li').eq(1).addClass('menu_on').siblings().removeClass('menu_on');
+            }
+
+        }
     })
 
     // query 参数页面 单选操作
@@ -117,9 +137,9 @@ $(function () {
         // 选中框 改变事件
         $('#body_box #is_select').change();
     })
-    
-     // headers 增加一项子项
-     $('#headers_box #add_data').on('click', function () {
+
+    // headers 增加一项子项
+    $('#headers_box #add_data').on('click', function () {
         // 获取 tbody 对象 转原生
         let tbody = $('#headers_box tbody')[0];
         // 创造 tr
@@ -219,9 +239,28 @@ $(function () {
             headers: mergeObj(getHeadersData()),
             success: function (res) {
                 $('#api_data_content').val(JSON.stringify(res));
+            },
+            beforeSend: function () {
+                // 等待提示 显示
+                $('.waitBox').css('display', 'flex');
+                // 发送-取消 按钮切换
+                $('#api_sub').toggle();
+                $('#over_sub').toggle();
+            },
+            complete: function () {
+                // 等待提示 隐藏
+                $('.waitBox').css('display', 'none');
+                // 清除 请求队列
+                ajaxState = null;
+                // 发送-取消 按钮切换
+                $('#api_sub').toggle();
+                $('#over_sub').toggle();
+            },
+            error: function (xml, text, err) {
+                $('#api_data_content').val(JSON.stringify(text));
             }
         }
-        
+
         console.log(request);
 
         console.log(mergeObj(getQueryData()));
@@ -233,7 +272,7 @@ $(function () {
         $('#api_data_content').val('');
 
         // 发起请求
-        $.ajax(request);
+        ajaxState = $.ajax(request);
     }
 
 
@@ -323,10 +362,30 @@ $(function () {
             headers: getHeadersData()[0] ? getHeadersData()[0] : {},
             success: function (res) {
                 $('#api_data_content').val(JSON.stringify(res));
+            },
+            beforeSend: function () {
+                // 等待提示 显示
+                $('.waitBox').css('display', 'flex');
+                // 发送-取消 按钮切换
+                $('#api_sub').toggle();
+                $('#over_sub').toggle();
+            },
+            complete: function () {
+                // 等待提示 隐藏
+                $('.waitBox').css('display', 'none');
+                // 清除 请求队列
+                ajaxState = null;
+                // 发送-取消 按钮切换
+                $('#api_sub').toggle();
+                $('#over_sub').toggle();
+            },
+            error: function (xml, text, err) {
+                $('#api_data_content').val(JSON.stringify(text));
+
             }
         }
 
-        $.ajax(request);
+        ajaxState = $.ajax(request);
 
     })
 
@@ -356,5 +415,13 @@ $(function () {
         tr.innerHTML = '<td><input type="text" placeholder="添加参数" id="data_name"></td><td><select class="fromdata_select"><option value="text">文本</option><option value="file">文件</option></select></td><td><input type="text" id="from_data"><a href="JavaScript:;"  id="del">删除</a></td>';
         // 插入 tr
         tbody.appendChild(tr);
+    })
+
+    // 单击发送 结束上一个请求
+    $('#over_sub').on('click', function () {
+        console.log('关闭请求操作');
+        if (ajaxState) {
+            ajaxState.abort();
+        }
     })
 });
